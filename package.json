@@ -4,7 +4,7 @@
   "description": "Testing React Components",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha --require setup.js *.spec.js"
   },
   "repository": {
     "type": "git",

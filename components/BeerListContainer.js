@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InputArea } from './InputArea';
+import { BeerForm } from './BeerForm';
 import { BeerList } from './BeerList';
 
 const BEER_LIST = [
@@ -12,7 +12,8 @@ const BEER_LIST = [
 export class BeerListContainer extends Component {
   constructor (props) {
     super(props);
-    this.state = {beers: []};
+    this.state = {beers: BEER_LIST};
+    this.Add = this.Add.bind(this);
   }
 
   Add (beer) {
@@ -20,9 +21,9 @@ export class BeerListContainer extends Component {
 
     typeof beer === 'array' ? beerList.concat(beer) : beerList.push(beer);
 
-    this.setState(
-      {beers : beerList}
-    );
+    this.setState({
+      beers : beerList
+    });
   }
 
   render () {
@@ -30,7 +31,7 @@ export class BeerListContainer extends Component {
 
     return (
       <div>
-        <InputArea handleSubmit={this.Add} />
+        <BeerForm handleSubmit={this.Add} />
         <BeerList beerList={beers} />
       </div>
     );
