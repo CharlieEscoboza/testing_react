@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import { BeerListContainer } from './components/BeerListContainer';
-import { InputArea } from './components/InputArea';
+import { BeerForm } from './components/BeerForm';
 import { BeerList } from './components/BeerList';
 
 
@@ -15,7 +15,7 @@ describe('BeerListContainer Component', () => {
 
   it('should render InputArea and BeerList', () => {
     expect(wrapper.containsAllMatchingElements([
-      <InputArea />,
+      <BeerForm />,
       <BeerList />
     ])).to.equal(true);
   });
@@ -38,16 +38,16 @@ describe('BeerListContainer Component', () => {
 
 describe('InputArea Component', () => {
   let wrapper;
-  let input;
+  let form;
 
   beforeEach(() => {
     wrapper = shallow(<BeerListContainer />);
-    input = wrapper.find(InputArea);
+    form = wrapper.find(BeerForm);
   });
 
   it('should contain a handleSubmit which must be the add method of the BeerListContainer instance', () => {
     const addMethod = wrapper.instance().Add;
-    expect(input.prop('handleSubmit')).to.eql(addMethod);
+    expect(form.prop('handleSubmit')).to.eql(addMethod);
   });
 
 });
