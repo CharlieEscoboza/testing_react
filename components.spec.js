@@ -36,18 +36,26 @@ describe('BeerListContainer Component', () => {
 
 });
 
-describe('InputArea Component', () => {
+describe('BeerForm Component', () => {
   let wrapper;
   let form;
+  let input;
 
   beforeEach(() => {
     wrapper = shallow(<BeerListContainer />);
     form = wrapper.find(BeerForm);
+    input = form.find('input');
   });
 
-  it('should contain a handleSubmit which must be the add method of the BeerListContainer instance', () => {
+  it('should contains a handleSubmit which must be the add method of the BeerListContainer instance', () => {
     const addMethod = wrapper.instance().Add;
     expect(form.prop('handleSubmit')).to.eql(addMethod);
   });
 
+  it('should contains input and button elements', () => {
+    expect(form.containsAllMatchingElements([
+      <input />,
+      <button dangerouslySetInnerHTML={{__html: "Add Beer"}} />
+    ]));
+  });
 });
