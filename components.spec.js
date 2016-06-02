@@ -58,4 +58,11 @@ describe('BeerForm Component', () => {
       <button dangerouslySetInnerHTML={{__html: "Add Beer"}} />
     ]));
   });
+
+  it('should updates beerForm component state when input change', () => {
+    let formComponent = shallow(<BeerForm />);
+    let inputComponent = formComponent.find('input');
+    inputComponent.simulate('change', { target: { value: 'BeerTest'}});
+    expect(formComponent.state('beerName')).to.equal('BeerTest');
+  });
 });
