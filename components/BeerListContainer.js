@@ -2,24 +2,25 @@ import React, { Component } from 'react';
 import { BeerForm } from './BeerForm';
 import { BeerList } from './BeerList';
 
-const BEER_LIST = [
-  'Presidente',
-  'Bohemia',
-  'Bhrama',
-  'Quisqueya'
-];
+// This was add for testing proposes
+// const BEER_LIST = [
+//   'Presidente',
+//   'Bohemia',
+//   'Bhrama',
+//   'Quisqueya'
+// ];
 
 export class BeerListContainer extends Component {
   constructor (props) {
     super(props);
-    this.state = {beers: BEER_LIST};
+    this.state = {beers: []};
     this.Add = this.Add.bind(this);
   }
 
   Add (beer) {
     var beerList = this.state.beers;
 
-    typeof beer === 'array' ? beerList.concat(beer) : beerList.push(beer);
+    beerList.push(beer);
 
     this.setState({
       beers : beerList

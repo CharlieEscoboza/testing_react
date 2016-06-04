@@ -6,6 +6,11 @@ export class BeerList extends Component {
   }
 
   render () {
+
+    if (!this.props.beerList || !this.props.beerList.length) {
+      return null;
+    }
+
     var beers = this.props.beerList.map((beer, index)=> {
       return (<li key={index}>{beer}</li>);
     });
